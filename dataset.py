@@ -130,10 +130,10 @@ class DroneDataset(Dataset):
         # ==========================================
         if self.train_mode:
             # 50% 的概率加噪声，50% 保持干净
-            # 这样模型既见过恶劣环境(-5dB)，也见过良好环境(15dB)
+            # 这样模型既见过恶劣环境(-10dB)，也见过良好环境(10dB)
             if np.random.rand() > 0.5: 
-                i_data = add_random_noise(i_data, min_snr=-5, max_snr=15)
-                q_data = add_random_noise(q_data, min_snr=-5, max_snr=15)
+                i_data = add_random_noise(i_data, min_snr=-10, max_snr=10)
+                q_data = add_random_noise(q_data, min_snr=-10, max_snr=10)
 
         # --- 分支 A: 1D ---
         i_1d = i_data[:self.len_1d]
